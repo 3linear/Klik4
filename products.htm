@@ -1,0 +1,570 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+<meta name="description" content="">
+<meta name="author" content="www.perpetuum.hr">
+<title>Klik 4</title>
+<link rel="stylesheet" href="css/klik4.css" />
+<script src="js/modernizr-1.5.min.js"></script>
+</head>
+<body>
+
+<script id="tmpl-promotional-product" type="text/x-jquery-tmpl">
+	<li id="promotional-product-${id}">
+		<figure>
+			<a title="${title}" href="product#${id}"><img src="content/images/products/${thumbnail}" width="152" height="104" alt="${title}"/></a>
+			<figcaption>
+				<span class="product-discount">${discount}</span>
+				<span class="product-title">${title}</span>
+				<span class="product-price">${price}</span>
+			</figcaption>
+		</figure>
+	</li>
+</script>
+
+<script id="tmpl-navigation-product" type="text/x-jquery-tmpl">
+	<figure>
+		<a title="${title}" href="product#${id}"><img src="content/images/products/${thumbnail}" width="65" height="65" alt="${title}"/></a>
+		<figcaption>
+			<span class="product-title">${title}</span>
+			<span class="product-price">{{html price}}</span>
+			<span class="product-discount">${description}</span>
+		</figcaption>
+	</figure>
+</script>
+
+<script id="tmpl-promo-product-simple" type="text/x-jquery-tmpl">
+	{{each(i, product) products}}
+		{{if (i == 0) || (i % 6 == 0)}}
+		<li>
+			<ul>
+		{{/if}}
+				<li><a title="${product.title}" href="product#${product.id}">${product.title}</a></li>
+		{{if (i == 5) || ((5 - (i % 6)) == 0)}}
+			</ul>
+		</li>
+		{{/if}}
+	{{/each}}
+</script>
+
+<script id="tmpl-promo-category-simple" type="text/x-jquery-tmpl">
+	<li><a title="${title}" href="category#${id}">${title}</a>
+		{{if categories.length > 0}}
+		<ul>
+		{{each(i, subcategory) categories}}
+			<li><a title="${subcategory.title}" href="category#${subcategory.id}" {{if i == categories.length-1}}class="link-more"{{/if}}>${subcategory.title}</a>
+		{{/each}}
+		</ul>
+		{{/if}}
+	</li>
+</script>
+
+<header id="page-header"> 
+	<div class="page-header-content">
+		<a href="http://www.klik4.hr" title="Klik4" id="logo"><img src="images/klik4_logo.png" alt="Klik4 logo"></a>
+		<div id="search-form">
+			<form id="search-form-mini" action="#" method="get">
+			    <input id="search" type="text" name="search" value="Traži na klik4" class="search-field" /><button type="submit" title="Search" class="button">Search</button>
+			</form>
+		</div>
+		<div class="header-additional-links">
+			<ul>
+				<li class="first"><a href="#" title="Sign In">Sign In</a></li>
+				<li><a href="#" title="My Account">My Account</a></li>
+			</ul>
+			<ul>
+				<li><a href="#" title="Sign in">Catalog Request</a></li>
+				<li><a href="#" title="Live Chat">Live Chat</a></li>
+				<li>800 544 0127</li>
+			</ul>
+		</div>
+		<div class="header-shopping-links">
+			<ul>
+				<li><a href="#" title="Cart">Cart (1)</a></li>
+				<li><a href="#" title="Quote">Quote (0)</a></li>
+				<li><a href="#" title="Quote">Compare (0)</a></li>
+			</ul>
+		</div>
+	</div>	
+</header>
+<div class="page-content-wrapper">
+	<section id="page-content">
+		<nav id="page-nav">
+			<ul class="clearfix">
+				<li id="nav-item-products">Proizvodi
+					<div id="nav-products">
+						<ul class="nav-categories-title clearfix">
+							<li class="categories-title">Category</li>
+							<li class="subcategories-title">Subcategory</li>
+							<li class="products-title">Hot In Category</li>
+						</ul> 		 
+						<ul class="nav-categories" id="nav-categories">
+							<li class="current-category"><a href="#">Kategorija prve razine 1</a>
+								<ul class="nav-categories-level-2">
+									<li><a href="#">Kategorija druge razine 1</a></li>
+									<li><a href="#">Kategorija druge razine 2</a></li>
+									<li><a href="#">Kategorija druge razine 3</a></li>
+									<li><a href="#">Kategorija druge razine 4</a></li>
+									<li><a href="#">Kategorija druge razine 5</a></li>
+									<li><a href="#">Kategorija druge razine 6</a></li>
+									<li><a href="#">Kategorija druge razine 7</a></li>
+									<li><a href="#">Kategorija druge razine 8</a></li>
+									<li><a href="#">Kategorija druge razine 9</a></li>
+									<li><a href="#">Kategorija druge razine 10</a></li>
+									<li><a href="#">Kategorija druge razine 11</a></li>
+									<li><a href="#">Kategorija druge razine 12</a></li>
+									<li><a href="#">Kategorija druge razine 13</a></li>
+									<li><a href="#">Kategorija druge razine 14</a></li>
+									<li><a href="#">Kategorija druge razine 15</a></li>
+									<li><a href="#">Kategorija druge razine 16</a></li>
+									<li><a href="#">Kategorija druge razine 17</a></li>
+									<li><a href="#">Kategorija druge razine 18</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Kategorija prve razine 2</a>
+								<ul class="nav-categories-level-2">
+									<li><a href="#">Kategorija druge razine 1</a></li>
+									<li><a href="#">Kategorija druge razine 2</a></li>
+									<li><a href="#">Kategorija druge razine 3</a></li>
+									<li><a href="#">Kategorija druge razine 4</a></li>
+									<li><a href="#">Kategorija druge razine 5</a></li>
+									<li><a href="#">Kategorija druge razine 6</a></li>
+									<li><a href="#">Kategorija druge razine 14</a></li>
+									<li><a href="#">Kategorija druge razine 15</a></li>
+									<li><a href="#">Kategorija druge razine 16</a></li>
+									<li><a href="#">Kategorija druge razine 17</a></li>
+									<li><a href="#">Kategorija druge razine 18</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Kategorija prve razine 3</a></li>
+							<li><a href="#">Kategorija prve razine 4</a></li>
+							<li><a href="#">Kategorija prve razine 5</a></li>
+							<li><a href="#">Kategorija prve razine 6</a></li>
+							<li><a href="#">Kategorija prve razine 7</a></li>
+							<li><a href="#">Kategorija prve razine 8</a></li>
+							<li><a href="#">Kategorija prve razine 9</a></li>
+							<li><a href="#">Kategorija prve razine 10</a></li>
+							<li><a href="#">Kategorija prve razine 11</a></li>
+							<li><a href="#">Kategorija prve razine 12</a></li>
+							<li><a href="#">Kategorija prve razine 13</a></li>
+							<li><a href="#">Kategorija prve razine 12</a></li>
+							<li><a href="#">Kategorija prve razine 13</a></li>
+						</ul>
+						<div id="nav-category-products"></div>
+					</div>
+				</li>
+				<li>Akcija 		 
+					<ul class="nav-level-2">
+						<li><a href="#">Proizvod 2</a></li>
+						<li><a href="#">Proizvod 3</a></li>
+						<li><a href="#">Proizvod 4</a></li>
+						<li><a href="#">Proizvod 5</a></li>
+					</ul>
+				</li>
+				<li>Brandovi 		 
+					<ul class="nav-level-2">
+						<li><a href="#">Proizvod 1</a></li>
+						<li><a href="#">Proizvod 2</a></li>
+						<li><a href="#">Proizvod 3</a></li>
+						<li><a href="#">Proizvod 4</a></li>
+					</ul>
+				</li>
+				<li>Brand maker 		 
+					<ul class="nav-level-2">
+						<li><a href="#">Proizvod 1</a></li>
+						<li><a href="#">Proizvod 2</a></li>
+						<li><a href="#">Proizvod 3</a></li>
+						<li><a href="#">Proizvod 4</a></li>
+					</ul>
+				</li>
+				<li>Saznaj više 		 
+					<ul class="nav-level-2">
+						<li><a href="#">Proizvod 1</a></li>
+						<li><a href="#">Proizvod 2</a></li>
+						<li><a href="#">Proizvod 3</a></li>
+						<li><a href="#">Proizvod 4</a></li>
+					</ul>
+				</li>
+				<li class="last">Podrška 		 
+					<ul class="nav-level-2">
+						<li><a href="#">Proizvod 1</a></li>
+						<li><a href="#">Proizvod 2</a></li>
+						<li><a href="#">Proizvod 3</a></li>
+						<li><a href="#">Proizvod 4</a></li>
+					</ul>
+				</li>			
+			</ul>
+		</nav>
+		<section id="breadcrumbs">
+			<ul>
+				<li class="home"><a href="#">Početna stranica</a></li>
+				<li>Satovi</li>
+			</ul>
+		</section>
+		<section id="category-content">
+			<header class="category-header">
+				<h1>Ručni satovi</h1>
+				<div class="category-toolbar-top clearfix">
+					<div class="category-pager">
+						<!--
+						<div class="products-amount"><strong>5 Artikala</strong></div>
+						-->
+						<div class="products-limiter">Prikaz <a href="#" class="current">5</a> <a href="#">10</a> <a href="#">15</a> proizvoda po stranici</div>
+						<!--
+						<div class="products-pager">pager</div>
+						-->
+					</div>
+					
+					<div class="products-sorter">
+						<div class="products-layout">Prikaži: <strong title="tablično" class="grid">tablično</strong> <a href="#" title="redno" class="list">redno</a></div>
+						<!--
+						<div class="sorter-sort-by">
+							<label>Poredaj po</label>
+							<select onchange="setLocation(this.value)">
+								<option value="#" selected="selected">Pozicija</option>
+								<option value="#">nazivu</option>
+								<option value="#">Cijena</option>
+							</select>
+							<a href="#" title="Postavi padajućim redoslijedom">uzlazno</a>
+						</div>
+						-->
+					</div>
+				</div>
+    		</header>
+    		<div class="products-grid-wrapper">
+				<ul class="products-grid clearfix">
+					<li class="item first">
+                		<a class="product-image" title="Ručni sat" href="#"><img width="135" height="135" alt="Ručni sat" src="content/images/products/p1_thumb_65x65.jpg"></a>
+            			<ul class="product-actions clearfix">
+            				<li><a class="link-details" href="#">Details</a></li>
+                			<li><a class="link-wishlist" href="#">Add to Wishlist</a></li>
+                            <li><a class="link-compare" href="#">Add to Compare</a></li>
+                            <li><a class="link-cart" href="#">Add to Cart</a></li>
+                        </ul>
+                		<h2 class="product-name"><a title="Ručni sat" href="#">Ručni sat</a></h2>
+                		<div class="price-box">
+                			<p class="old-price"><span class="price-label">Regular Price:</span> <span id="old-price-1" class="price">1.234,00&nbsp;kn</span></p>
+                			<p class="special-price"><span class="price-label">Special Price:</span> <span id="product-price-1" class="price">234,00&nbsp;kn</span></p>
+                			<p class="additional-data"><span class="item-id">Item:<span>2393</span></span> <span class="item-sku">SKU:<span>SM-7561-BLN</span></span></p>
+                		</div>
+                    </li>
+                    <li class="item first">
+                		<a class="product-image" title="Ručni sat" href="#"><img width="135" height="135" alt="Ručni sat" src="content/images/products/p1_thumb_65x65.jpg"></a>
+            			<ul class="product-actions clearfix">
+            				<li><a class="link-details" href="#">Details</a></li>
+                			<li><a class="link-wishlist" href="#">Add to Wishlist</a></li>
+                            <li><a class="link-compare" href="#">Add to Compare</a></li>
+                            <li><a class="link-cart" href="#">Add to Cart</a></li>
+                        </ul>
+                		<h2 class="product-name"><a title="Ručni sat" href="#">Ručni sat</a></h2>
+                		<div class="price-box">
+                			<p class="old-price"><span class="price-label">Regular Price:</span> <span id="old-price-1" class="price">1.234,00&nbsp;kn</span></p>
+                			<p class="special-price"><span class="price-label">Special Price:</span> <span id="product-price-1" class="price">234,00&nbsp;kn</span></p>
+                			<p class="additional-data"><span class="item-id">Item:<span>2393</span></span> <span class="item-sku">SKU:<span>SM-7561-BLN</span></span></p>
+                		</div>
+                    </li>
+                    <li class="item first">
+                		<a class="product-image" title="Ručni sat" href="#"><img width="135" height="135" alt="Ručni sat" src="content/images/products/p1_thumb_65x65.jpg"></a>
+            			<ul class="product-actions clearfix">
+            				<li><a class="link-details" href="#">Details</a></li>
+                			<li><a class="link-wishlist" href="#">Add to Wishlist</a></li>
+                            <li><a class="link-compare" href="#">Add to Compare</a></li>
+                            <li><a class="link-cart" href="#">Add to Cart</a></li>
+                        </ul>
+                		<h2 class="product-name"><a title="Ručni sat" href="#">Ručni sat</a></h2>
+                		<div class="price-box">
+                			<p class="old-price"><span class="price-label">Regular Price:</span> <span id="old-price-1" class="price">1.234,00&nbsp;kn</span></p>
+                			<p class="special-price"><span class="price-label">Special Price:</span> <span id="product-price-1" class="price">234,00&nbsp;kn</span></p>
+                			<p class="additional-data"><span class="item-id">Item:<span>2393</span></span> <span class="item-sku">SKU:<span>SM-7561-BLN</span></span></p>
+                		</div>
+                    </li>
+                    <li class="item first">
+                		<a class="product-image" title="Ručni sat" href="#"><img width="135" height="135" alt="Ručni sat" src="content/images/products/p1_thumb_65x65.jpg"></a>
+            			<ul class="product-actions clearfix">
+            				<li><a class="link-details" href="#">Details</a></li>
+                			<li><a class="link-wishlist" href="#">Add to Wishlist</a></li>
+                            <li><a class="link-compare" href="#">Add to Compare</a></li>
+                            <li><a class="link-cart" href="#">Add to Cart</a></li>
+                        </ul>
+                		<h2 class="product-name"><a title="Ručni sat" href="#">Ručni sat</a></h2>
+                		<div class="price-box">
+                			<p class="old-price"><span class="price-label">Regular Price:</span> <span id="old-price-1" class="price">1.234,00&nbsp;kn</span></p>
+                			<p class="special-price"><span class="price-label">Special Price:</span> <span id="product-price-1" class="price">234,00&nbsp;kn</span></p>
+                			<p class="additional-data"><span class="item-id">Item:<span>2393</span></span> <span class="item-sku">SKU:<span>SM-7561-BLN</span></span></p>
+                		</div>
+                    </li>
+				</ul>
+				<ul class="products-grid clearfix">
+					<li class="item first">
+                		<a class="product-image" title="Ručni sat" href="#"><img width="135" height="135" alt="Ručni sat" src="content/images/products/p1_thumb_65x65.jpg"></a>
+            			<ul class="product-actions clearfix">
+            				<li><a class="link-details" href="#">Details</a></li>
+                			<li><a class="link-wishlist" href="#">Add to Wishlist</a></li>
+                            <li><a class="link-compare" href="#">Add to Compare</a></li>
+                            <li><a class="link-cart" href="#">Add to Cart</a></li>
+                        </ul>
+                		<h2 class="product-name"><a title="Ručni sat" href="#">Ručni sat</a></h2>
+                		<div class="price-box">
+                			<p class="old-price"><span class="price-label">Regular Price:</span> <span id="old-price-1" class="price">1.234,00&nbsp;kn</span></p>
+                			<p class="special-price"><span class="price-label">Special Price:</span> <span id="product-price-1" class="price">234,00&nbsp;kn</span></p>
+                			<p class="additional-data"><span class="item-id">Item:<span>2393</span></span> <span class="item-sku">SKU:<span>SM-7561-BLN</span></span></p>
+                		</div>
+                    </li>
+                    <li class="item first">
+                		<a class="product-image" title="Ručni sat" href="#"><img width="135" height="135" alt="Ručni sat" src="content/images/products/p1_thumb_65x65.jpg"></a>
+            			<ul class="product-actions clearfix">
+            				<li><a class="link-details" href="#">Details</a></li>
+                			<li><a class="link-wishlist" href="#">Add to Wishlist</a></li>
+                            <li><a class="link-compare" href="#">Add to Compare</a></li>
+                            <li><a class="link-cart" href="#">Add to Cart</a></li>
+                        </ul>
+                		<h2 class="product-name"><a title="Ručni sat" href="#">Ručni sat</a></h2>
+                		<div class="price-box">
+                			<p class="old-price"><span class="price-label">Regular Price:</span> <span id="old-price-1" class="price">1.234,00&nbsp;kn</span></p>
+                			<p class="special-price"><span class="price-label">Special Price:</span> <span id="product-price-1" class="price">234,00&nbsp;kn</span></p>
+                			<p class="additional-data"><span class="item-id">Item:<span>2393</span></span> <span class="item-sku">SKU:<span>SM-7561-BLN</span></span></p>
+                		</div>
+                    </li>
+                    <li class="item first">
+                		<a class="product-image" title="Ručni sat" href="#"><img width="135" height="135" alt="Ručni sat" src="content/images/products/p1_thumb_65x65.jpg"></a>
+            			<ul class="product-actions clearfix">
+            				<li><a class="link-details" href="#">Details</a></li>
+                			<li><a class="link-wishlist" href="#">Add to Wishlist</a></li>
+                            <li><a class="link-compare" href="#">Add to Compare</a></li>
+                            <li><a class="link-cart" href="#">Add to Cart</a></li>
+                        </ul>
+                		<h2 class="product-name"><a title="Ručni sat" href="#">Ručni sat</a></h2>
+                		<div class="price-box">
+                			<p class="old-price"><span class="price-label">Regular Price:</span> <span id="old-price-1" class="price">1.234,00&nbsp;kn</span></p>
+                			<p class="special-price"><span class="price-label">Special Price:</span> <span id="product-price-1" class="price">234,00&nbsp;kn</span></p>
+                			<p class="additional-data"><span class="item-id">Item:<span>2393</span></span> <span class="item-sku">SKU:<span>SM-7561-BLN</span></span></p>
+                		</div>
+                    </li>
+                    <li class="item first">
+                		<a class="product-image" title="Ručni sat" href="#"><img width="135" height="135" alt="Ručni sat" src="content/images/products/p1_thumb_65x65.jpg"></a>
+            			<ul class="product-actions clearfix">
+            				<li><a class="link-details" href="#">Details</a></li>
+                			<li><a class="link-wishlist" href="#">Add to Wishlist</a></li>
+                            <li><a class="link-compare" href="#">Add to Compare</a></li>
+                            <li><a class="link-cart" href="#">Add to Cart</a></li>
+                        </ul>
+                		<h2 class="product-name"><a title="Ručni sat" href="#">Ručni sat</a></h2>
+                		<div class="price-box">
+                			<p class="old-price"><span class="price-label">Regular Price:</span> <span id="old-price-1" class="price">1.234,00&nbsp;kn</span></p>
+                			<p class="special-price"><span class="price-label">Special Price:</span> <span id="product-price-1" class="price">234,00&nbsp;kn</span></p>
+                			<p class="additional-data"><span class="item-id">Item:<span>2393</span></span> <span class="item-sku">SKU:<span>SM-7561-BLN</span></span></p>
+                		</div>
+                    </li>
+				</ul>
+				<div class="category-toolbar-bottom clearfix">
+					<div class="category-pager">
+						<div class="products-amount"><strong>5 Artikala</strong></div>
+					
+						<div class="products-limiter">
+							<label>Prikaži</label>
+							<select onchange="setLocation(this.value)">
+								<option value="#" selected="selected">9</option>
+								<option value="#">15</option>
+								<option value="#">30</option>
+							</select>po stranici
+						</div>
+					
+						<div class="products-pager">
+							pager
+						</div>
+					</div>
+					
+					<div class="products-sorter">
+						<span>Prikaži:</span>
+						<ul class="sorter-view-mode">
+							<li class="grid"><strong title="tablično">tablično</strong></li>
+							<li class="list"><a href="#" title="redno">redno</a></li>
+						</ul>
+					
+						<div class="sorter-sort-by">
+							<label>Poredaj po</label>
+							<select onchange="setLocation(this.value)">
+								<option value="#" selected="selected">Pozicija</option>
+								<option value="#">nazivu</option>
+								<option value="#">Cijena</option>
+							</select>
+							<a href="#" title="Postavi padajućim redoslijedom">uzlazno</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="products-filter">
+				<h2>Suzi izbor</h2>
+				<dl>
+					<dt class="last odd expanded">Cijena</dt>
+					<dd class="last odd">
+						<ol>
+							<li><a href="#"><span class="price">0,00&nbsp;kn</span> - <span class="price">10.000.000,00&nbsp;kn</span></a> (3)</li>
+							<li><a href="#"><span class="price">10.000.000,00&nbsp;kn</span> - <span class="price">20.000.000,00&nbsp;kn</span></a> (2)</li>
+						</ol>
+					</dd>
+					<dt class="last odd expanded">Cijena</dt>
+					<dd class="last odd">
+						<ol>
+							<li><a href="#"><span class="price">0,00&nbsp;kn</span> - <span class="price">10.000.000,00&nbsp;kn</span></a> (3)</li>
+							<li><a href="#"><span class="price">10.000.000,00&nbsp;kn</span> - <span class="price">20.000.000,00&nbsp;kn</span></a> (2)</li>
+						</ol>
+					</dd>
+					<dt class="last odd expanded">Cijena</dt>
+					<dd class="last odd">
+						<ol>
+							<li><a href="#"><span class="price">0,00&nbsp;kn</span> - <span class="price">10.000.000,00&nbsp;kn</span></a> (3)</li>
+							<li><a href="#"><span class="price">10.000.000,00&nbsp;kn</span> - <span class="price">20.000.000,00&nbsp;kn</span></a> (2)</li>
+						</ol>
+					</dd>
+					<dt class="last odd expanded">Cijena</dt>
+					<dd class="last odd">
+						<ol>
+							<li><a href="#"><span class="price">0,00&nbsp;kn</span> - <span class="price">10.000.000,00&nbsp;kn</span></a> (3)</li>
+							<li><a href="#"><span class="price">10.000.000,00&nbsp;kn</span> - <span class="price">20.000.000,00&nbsp;kn</span></a> (2)</li>
+						</ol>
+					</dd>
+				</dl>
+				<a href="#" class="products-filter-close">Zatvori sve</a>
+			</div>
+		</section>
+		<section id="recently-products">
+			<header>Recently browsed</header>
+			<ul id="recently-products-list"></ul>
+		</section>
+		<section id="about-and-compare" class="clearfix">
+			<div class="content">
+				<h2 class="clearfix">Zašto Klik 4</h2>
+				<article>
+					<p>Received the bags today. You are amazing. How tasteful I will be heartily endorsing "imagewar" from Inkhead when I have the opportunity. My daughter is a social media specialist so I'll get help from her on how to "broadcast" my appreciation.</p> 
+					<p>Jeanne Hitchcock Surgical Society Staff 2010 Surgery Faculty Administrator At Hennepin County Medical Center Minneapolis, MN</p>
+				</article>
+				<ul class="clearfix">
+					<li><a href="#" title="">Apparel</a></li>
+					<li><a href="#" title="">T-shirts</a></li>
+					<li><a href="#" title="">Hats &amp; visors</a></li>
+					<li><a href="#" title="">Golf Shirts</a></li>
+					<li><a href="#" title="">Dress Shirts</a></li>
+					<li><a href="#" title="">Jackets</a></li>
+					<li><a href="#" title="">Bottle Openers</a></li>
+				</ul>
+			</div>
+			<div class="side-bar">
+				<h2>Usporedi proizvode (4)</h2>
+				<div class="products-compare-list">
+					<ul>
+						<li>
+							<a class="remove-product" title="Remove This Item" href="#">Remove This Item</a>
+							<a class="compare-product" href="#" title="partner 1"><img src="content/images/partner_link_1.png" alt="partner 1"> Product 1</a>
+						</li>
+						<li>
+							<a class="remove-product" title="Remove This Item" href="#">Remove This Item</a>
+							<a class="compare-product" href="#" title="partner 1"><img src="content/images/partner_link_1.png" alt="partner 1"> Product 1</a>
+						</li>
+						<li>
+							<a class="remove-product" title="Remove This Item" href="#">Remove This Item</a>
+							<a class="compare-product" href="#" title="partner 1"><img src="content/images/partner_link_1.png" alt="partner 1"> Product 1</a>
+						</li>
+						<li>
+							<a class="remove-product" title="Remove This Item" href="#">Remove This Item</a>
+							<a class="compare-product" href="#" title="partner 1"><img src="content/images/partner_link_1.png" alt="partner 1"> Product 1</a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="products-clear-all">Clear all</a>
+				<a href="#" class="products-compare-all">See all &gt;&gt;</a>
+			</div>
+		</section>
+	</section>
+</div>
+<footer id="page-footer">
+	<nav id="page-footer-nav" class="clearfix">
+		<ul>
+			<li>E-mail Exclusives
+				<ul class="newsletter-signup">
+					<li>Pretplati se i primaj specijalne ponude putem e-maila.</li>
+					<li><a href="#" title="">Sign up &gt;</a></li>
+				</ul>
+			</li>
+			<li>Shop
+				<ul>
+					<li><a href="#" title="">by Category</a></li>
+					<li><a href="#" title="">by Brand</a></li>
+					<li><a href="#" title="">by Manufacturer</a></li>
+					<li><a href="#" title="">by Industry or Organization</a></li>
+					<li><a href="#" title="">by Theme or Event</a></li>
+					<li><a href="#" title="">Buying Guides</a></li>
+					<li><a href="#" title="">Importing Large Quantitites</a></li>
+					<li><a href="#" title="">Whole sale promo products</a></li>
+				</ul>
+			</li>
+			<li>Subscribe
+				<ul>
+					<li><a href="#" title="">Site Feed</a></li>
+					<li><a href="#" title="">Catalog Request</a></li>
+					<li><a href="#" title="">E-mail Newsletter</a></li>
+					<li><a href="#" title="">Blog</a></li>
+				</ul>
+			</li>
+			<li>Support
+				<ul>
+					<li><a href="#" title="">Contact us</a></li>
+					<li><a href="#" title="">Knowledge base</a></li>
+					<li><a href="#" title="">Reseller Application</a></li>
+					<li><a href="#" title="">Affiliate Application</a></li>
+					<li><a href="#" title="">Privacy and security</a></li>
+					<li><a href="#" title="">Terms of use</a></li>
+					<li><a href="#" title="">International orders</a></li>
+				</ul>
+			</li>
+			<li>Company
+				<ul>
+					<li><a href="#" title="">About us</a></li>
+					<li><a href="#" title="">Donation</a></li>
+					<li><a href="#" title="">Testimonials</a></li>
+					<li><a href="#" title="">Clients</a></li>
+					<li><a href="#" title="">press Releases</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<ul id="sponsors">
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+	</ul>
+	<section id="basic-informations">
+		<p>&copy;2011 KLIK 4, Inc. All Rights Reserved</p>
+		<p><a href="http://www.klik4.com" title=""><img src="images/klik4_logo_midium.png" alt="Klik4 logo midium"></a></p>
+		<p>KLIK 4 Promotional Products</p>
+		<p>XXXXXXXXXXXXXX</p>
+		<p>XXXXXXXXXXXXXX</p>
+		<p>Croatia</p>
+		<p>Phone: 800-554-0127</p>
+		<p>Email: <a href="mailto:sales@klik4.com">sales@klik4.com</a></p>
+	</section>
+</footer>
+<script src="js/jquery-1.7.1.min.js?v=1"></script>
+<script src="js/jquery.tmpl.min.js?v=1"></script>
+<script src="js/jquery.jcarousel.min.js?v=1"></script>
+<script src="js/jquery.fancybox-1.3.4.min.js?v=1"></script>
+<script src="js/jquery.mousewheel-3.0.4.min.js?v=1"></script>
+<script src="js/jquery.jscrollpane.min.js?v=1"></script>
+<script src="js/enzyme.jquery.slider-0.2.min.js?v=1"></script>
+<script src="js/enzyme-0.1.min.js?v=1"></script>
+<script src="js/perpetuum.jquery.ticker-2.0.js?v=1"></script>
+<script src="js/klik4.js?v=1"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	enzyme.page.init(klik4.homeInit);
+});
+</script>
+
+</body>
+</html>

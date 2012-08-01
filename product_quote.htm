@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+<meta name="description" content="">
+<meta name="author" content="www.perpetuum.hr">
+<title>Klik 4</title>
+<link rel="stylesheet" href="css/klik4.css" media="all"/>
+<script src="js/modernizr-1.5.min.js"></script>
+
+<style>
+	html, body {
+		margin: 0;
+		padding: 0;
+		background: #fff url();
+	}
+</style>
+
+</head>
+<body class="for-quote">
+<header id="modal-window-head">
+	<h1>Request a quote</h1>
+</header>
+<section id="page-content">
+	<section id="product-content" class="clearfix">
+		<section class="product-image">
+			<figure>
+				<img id="product-image" src="http://www.nekra.net/klik4/media/catalog/product/cache/1/image/425x/9df78eab33525d08d6e5fb8d27136e95/p/1/p1_thumb_152x104.jpg" alt="Ručni sat" title="Ručni sat" />
+			</figure>
+		</section>
+		<section class="product-main-data">
+			<header>
+				<h2>Ručni sat s narukvicom od nikla</h2>
+				<p class="product-id">ITEM: 2393</p>
+				<p class="product-sku">Sku: 123456789</p>
+			</header>
+		</section>
+	</section>
+	
+	<section class="product-request-quote form-content">
+		    
+	    <form>
+	    <div class="fieldset-wrapper">
+		     <fieldset>
+		    	<ul class="form-list">
+					<li>
+						<label for="txt-company" class="required"><em>*</em>Tvrtka</label>
+						<div class="input-box">
+							<input type="text" name="txt-company" value="" id="txt-company" class="input-text required-entry" title="Tvrtka" />
+						</div>
+					</li>
+					<li>
+						<label for="txt-uid" class="required"><em>*</em>OIB</label>
+						<div class="input-box">
+							<input type="text" name="txt-uid" class="input-text required-entry validate-number" id="txt-uid" title="OIB" />
+						</div>
+					</li>
+					<li>
+						<label for="txt-contact" class="required"><em>*</em>Osoba za kontakt</label>
+						<div class="input-box">
+							<input type="text" name="txt-contact" value="" id="txt-contact" class="input-text required-entry" title="Osoba za kontakt" />
+						</div>
+					</li>
+					<li>
+						<label for="txt-address" class="required"><em>*</em>Ulica i broj</label>
+						<div class="input-box">
+							<input type="text" name="txt-address" value="" id="txt-address" class="input-text required-entry" title="Ulica i broj" />
+						</div>
+					</li>
+					<li>
+						<label for="txt-zip" class="required"><em>*</em>Poštanski broj</label>
+						<div class="input-box">
+							<input type="text" name="txt-zip" value="" id="txt-zip" class="input-text required-entry validate-number" title="Poštanski broj" style="width: 100px;"/>
+						</div>
+					</li>
+					<li>
+						<label for="txt-city" class="required"><em>*</em>Grad</label>
+						<div class="input-box">
+							<input type="text" name="txt-city" value="" id="txt-city" class="input-text required-entry" title="Grad" />
+						</div>
+					</li>
+					<li>
+						<label for="sel-country" class="required"><em>*</em>Država</label>
+						<div class="input-box">
+							<select title="Država" class="validate-select" id="opt-country" name="opt-country" style="width: 370px;">
+								<option value=""> </option>
+								<option selected="selected" value="HR">Hrvatska</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<label for="txt-phone" class="required"><em>*</em>Telefon</label>
+						<div class="input-box">
+							<input type="text" name="txt-phone" value="" id="txt-phone" class="input-text required-entry" title="Telefon" style="width: 100px;"/>
+						</div>
+					</li>
+					<li>
+						<label for="email" class="required"><em>*</em>E-adresa</label>
+						<div class="input-box">
+							<input type="text" name="login[username]" value="" id="email" class="input-text required-entry validate-email" title="E-adresa" />
+						</div>
+					</li>
+					<li>
+						<label for="txt-quantity" class="required"><em>*</em>Količina</label>
+						<div class="input-box">
+							<input type="text" name="txt-quantity" value="" id="txt-quantity" class="input-text required-entry validate-number" title="Količina" style="width: 100px;"/>
+						</div>
+					</li>
+					<li>
+						<label for="txt-file" class="required">Logo <em>(tiff, jpg, png, eps, cdr)</em><br>Ako nam pošaljete i logo lakše ćemo vam odgovoriti na upit!</label>
+						<div class="input-box">
+							<input type="text" name="login[username]" value="" id="email" class="input-text required-entry validate-email" title="E-adresa" />
+						</div>
+					</li>
+					<li>
+						<label for="txt-comment" class="required">Komentar</label>
+						<div class="input-box">
+							<textarea type="text" name="txt-comment" value="" id="txt-comment" class="input-text" title="Komentar"></textarea>
+						</div>
+					</li>
+				</ul>
+				<footer>
+	    			<div class="form-buttons">
+                    	<button type="submit" class="button-submit" title="Zatraži ponudu" name="btn-request-quote" id="btn-request-quote"><span><span>Zatraži ponudu</span></span></button>
+                	</div>
+                </footer>
+		    </fieldset>
+		</div>
+  
+	    <footer class="form-content-footer clearfix">
+			<p class="required">* Obavezna polja</p>    
+	    </footer>
+	    </form>
+	   
+    </section>
+    
+</section>
+
+<script src="js/jquery-1.7.1.min.js?v=1"></script>
+<script src="js/enzyme.forms.js?v=1"></script>
+<script src="js/enzyme-0.1.min.js?v=1"></script>
+<script src="js/klik4.js?v=1"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+});
+</script>
+
+</body>
+</html>

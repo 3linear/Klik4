@@ -1,0 +1,781 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+<meta name="description" content="">
+<meta name="author" content="www.perpetuum.hr">
+<title>Klik 4</title>
+<link rel="stylesheet" href="css/klik4.css" />
+<link rel="stylesheet" href="css/fancybox.css" />
+<script src="js/modernizr-1.5.min.js"></script>
+</head>
+<body>
+
+<script id="tmpl-promotional-product" type="text/x-jquery-tmpl">
+	<li id="promotional-product-${id}">
+		<figure>
+			<a title="${title}" href="product#${id}"><img src="content/images/products/${thumbnail}" width="152" height="104" alt="${title}"/></a>
+			<figcaption>
+				<span class="product-discount">${discount}</span>
+				<span class="product-title">${title}</span>
+				<span class="product-price">${price}</span>
+			</figcaption>
+		</figure>
+	</li>
+</script>
+
+<script id="tmpl-navigation-product" type="text/x-jquery-tmpl">
+	<figure>
+		<a title="${title}" href="product#${id}"><img src="content/images/products/${thumbnail}" width="65" height="65" alt="${title}"/></a>
+		<figcaption>
+			<span class="product-title">${title}</span>
+			<span class="product-price">{{html price}}</span>
+			<span class="product-discount">${description}</span>
+		</figcaption>
+	</figure>
+</script>
+
+<script id="tmpl-promo-product-simple" type="text/x-jquery-tmpl">
+	{{each(i, product) products}}
+		{{if (i == 0) || (i % 6 == 0)}}
+		<li>
+			<ul>
+		{{/if}}
+				<li><a title="${product.title}" href="product#${product.id}">${product.title}</a></li>
+		{{if (i == 5) || ((5 - (i % 6)) == 0)}}
+			</ul>
+		</li>
+		{{/if}}
+	{{/each}}
+</script>
+
+<script id="tmpl-promo-category-simple" type="text/x-jquery-tmpl">
+	<li><a title="${title}" href="category#${id}">${title}</a>
+		{{if categories.length > 0}}
+		<ul>
+		{{each(i, subcategory) categories}}
+			<li><a title="${subcategory.title}" href="category#${subcategory.id}" {{if i == categories.length-1}}class="link-more"{{/if}}>${subcategory.title}</a>
+		{{/each}}
+		</ul>
+		{{/if}}
+	</li>
+</script>
+
+<header id="page-header"> 
+	<div class="page-header-content">
+		<a href="http://www.klik4.hr" title="Klik4" id="logo"><img src="images/klik4_logo.png" alt="Klik4 logo"></a>
+		<div id="search-form">
+			<form id="search-form-mini" action="#" method="get">
+			    <input id="search" type="text" name="search" value="Traži na klik4" class="search-field" /><button type="submit" title="Search" class="button">Search</button>
+			</form>
+		</div>
+		<div class="header-additional-links">
+			<ul>
+				<li class="first"><a href="#" title="Sign In">Sign In</a></li>
+				<li><a href="#" title="My Account">My Account</a></li>
+			</ul>
+			<ul>
+				<li><a href="#" title="Sign in">Catalog Request</a></li>
+				<li><a href="#" title="Live Chat">Live Chat</a></li>
+				<li>800 544 0127</li>
+			</ul>
+		</div>
+		<div class="header-shopping-links">
+			<ul>
+				<li><a href="#" title="Cart">Cart (1)</a></li>
+				<li><a href="#" title="Quote">Quote (0)</a></li>
+				<li><a href="#" title="Quote">Compare (0)</a></li>
+			</ul>
+		</div>
+	</div>	
+</header>
+<div class="page-content-wrapper">
+	<section id="page-content">
+		<nav id="page-nav">
+			<ul class="clearfix">
+				<li id="nav-item-products">Proizvodi
+					<div id="nav-products">
+						<ul class="nav-categories-title clearfix">
+							<li class="categories-title">Category</li>
+							<li class="subcategories-title">Subcategory</li>
+							<li class="products-title">Hot In Category</li>
+						</ul> 		 
+						<ul class="nav-categories" id="nav-categories">
+							<li class="current-category"><a href="#">Kategorija prve razine 1</a>
+								<ul class="nav-categories-level-2">
+									<li><a href="#">Kategorija druge razine 1</a></li>
+									<li><a href="#">Kategorija druge razine 2</a></li>
+									<li><a href="#">Kategorija druge razine 3</a></li>
+									<li><a href="#">Kategorija druge razine 4</a></li>
+									<li><a href="#">Kategorija druge razine 5</a></li>
+									<li><a href="#">Kategorija druge razine 6</a></li>
+									<li><a href="#">Kategorija druge razine 7</a></li>
+									<li><a href="#">Kategorija druge razine 8</a></li>
+									<li><a href="#">Kategorija druge razine 9</a></li>
+									<li><a href="#">Kategorija druge razine 10</a></li>
+									<li><a href="#">Kategorija druge razine 11</a></li>
+									<li><a href="#">Kategorija druge razine 12</a></li>
+									<li><a href="#">Kategorija druge razine 13</a></li>
+									<li><a href="#">Kategorija druge razine 14</a></li>
+									<li><a href="#">Kategorija druge razine 15</a></li>
+									<li><a href="#">Kategorija druge razine 16</a></li>
+									<li><a href="#">Kategorija druge razine 17</a></li>
+									<li><a href="#">Kategorija druge razine 18</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Kategorija prve razine 2</a>
+								<ul class="nav-categories-level-2">
+									<li><a href="#">Kategorija druge razine 1</a></li>
+									<li><a href="#">Kategorija druge razine 2</a></li>
+									<li><a href="#">Kategorija druge razine 3</a></li>
+									<li><a href="#">Kategorija druge razine 4</a></li>
+									<li><a href="#">Kategorija druge razine 5</a></li>
+									<li><a href="#">Kategorija druge razine 6</a></li>
+									<li><a href="#">Kategorija druge razine 14</a></li>
+									<li><a href="#">Kategorija druge razine 15</a></li>
+									<li><a href="#">Kategorija druge razine 16</a></li>
+									<li><a href="#">Kategorija druge razine 17</a></li>
+									<li><a href="#">Kategorija druge razine 18</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Kategorija prve razine 3</a></li>
+							<li><a href="#">Kategorija prve razine 4</a></li>
+							<li><a href="#">Kategorija prve razine 5</a></li>
+							<li><a href="#">Kategorija prve razine 6</a></li>
+							<li><a href="#">Kategorija prve razine 7</a></li>
+							<li><a href="#">Kategorija prve razine 8</a></li>
+							<li><a href="#">Kategorija prve razine 9</a></li>
+							<li><a href="#">Kategorija prve razine 10</a></li>
+							<li><a href="#">Kategorija prve razine 11</a></li>
+							<li><a href="#">Kategorija prve razine 12</a></li>
+							<li><a href="#">Kategorija prve razine 13</a></li>
+							<li><a href="#">Kategorija prve razine 12</a></li>
+							<li><a href="#">Kategorija prve razine 13</a></li>
+						</ul>
+						<div id="nav-category-products"></div>
+					</div>
+				</li>
+				<li>Akcija 		 
+					<ul class="nav-level-2">
+						<li><a href="#">Proizvod 2</a></li>
+						<li><a href="#">Proizvod 3</a></li>
+						<li><a href="#">Proizvod 4</a></li>
+						<li><a href="#">Proizvod 5</a></li>
+					</ul>
+				</li>
+				<li>Brandovi 		 
+					<ul class="nav-level-2">
+						<li><a href="#">Proizvod 1</a></li>
+						<li><a href="#">Proizvod 2</a></li>
+						<li><a href="#">Proizvod 3</a></li>
+						<li><a href="#">Proizvod 4</a></li>
+					</ul>
+				</li>
+				<li>Brand maker 		 
+					<ul class="nav-level-2">
+						<li><a href="#">Proizvod 1</a></li>
+						<li><a href="#">Proizvod 2</a></li>
+						<li><a href="#">Proizvod 3</a></li>
+						<li><a href="#">Proizvod 4</a></li>
+					</ul>
+				</li>
+				<li>Saznaj više 		 
+					<ul class="nav-level-2">
+						<li><a href="#">Proizvod 1</a></li>
+						<li><a href="#">Proizvod 2</a></li>
+						<li><a href="#">Proizvod 3</a></li>
+						<li><a href="#">Proizvod 4</a></li>
+					</ul>
+				</li>
+				<li class="last">Podrška 		 
+					<ul class="nav-level-2">
+						<li><a href="#">Proizvod 1</a></li>
+						<li><a href="#">Proizvod 2</a></li>
+						<li><a href="#">Proizvod 3</a></li>
+						<li><a href="#">Proizvod 4</a></li>
+					</ul>
+				</li>			
+			</ul>
+		</nav>
+		<section id="breadcrumbs">
+			<ul>
+				<li class="home"><a href="#">Početna stranica</a></li>
+				<li><a href="#">Satovi</a></li>
+				<li>Ručni sat</li>
+			</ul>
+		</section>
+		
+		<section id="product-customization" class="clearfix">
+			<section id="product-customizer">
+				<header class="customizer-header">
+					<h2>Customization progress</h2>
+					<div id="progress-bar"><div style="width: 17%;"></div></div>
+				</header>
+				
+				<section id="step-1" class="customizer-step">
+					<header>
+						<a href="#" class="link-back">&lt;&lt; Product Details</a>
+						<button class="btn-continue" data-next="2">Next Step >></button>
+					</header>
+					<section class="step-content">
+						<fieldset id="step-1-color">
+							<h3>Item Color</h3>
+							<p>Please choose your product color. For exact colors we recommend requesting a sample. Stock item colors shown on website are for reference only and may not match actual item color.</p>
+							<p><a href="#step-1-color-data" class="modal help-me-choose">Help Me Choose?</a></p>
+							<ul id="item-color-palete" class="clearfix">
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena" class="current"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+							</ul>
+							<p class="footnote">*Stock item colors shown on website are for reference only and may not match actual item color. Please request a sample for exact colors.</p>
+						</fieldset>
+					</section>
+					<footer>
+						<a href="#" class="link-back">&lt;&lt; Product Details</a>
+						<button class="btn-continue" data-next="2">Next Step >></button>
+					</footer>
+				</section>
+				
+				<section id="step-2" class="customizer-step">
+					<header>
+						<button class="btn-back" data-prev="1"><< Previous Step</button>
+						<button class="btn-continue" data-next="3">Next Step >></button>
+					</header>
+					<section class="step-content">
+						<fieldset id="step-2-decoration">
+							<h3>Decoration method</h3>
+							<p><a href="#step-2-decoration-method-data" class="modal help-me-choose">Help Me Choose?</a></p>							
+							<ul id="item-decoration-type" class="clearfix">
+								<li><input type="radio" id="item-decoration-0" name="item-decoration" value="1" data-decorationtype="none" data-colorsmin="0" data-colorsmax="0" checked="checked"><label for="item-decoration-0">No decoration</label></li>
+								<li><input type="radio" id="item-decoration-1" name="item-decoration" value="1" data-decorationtype="embroidery" data-colorsmin="0" data-colorsmax="6"><label for="item-decoration-1">Embroidery</label></li>
+								<li><input type="radio" id="item-decoration-2" name="item-decoration" value="1" data-decorationtype="print" data-colorsmin="0" data-colorsmax="0"><label for="item-decoration-2">Full Color Heat Transfer</label></li>
+								<li><input type="radio" id="item-decoration-3" name="item-decoration" value="1" data-decorationtype="print" data-colorsmin="1" data-colorsmax="1"><label for="item-decoration-3">Screen Print - 1 Color</label></li>
+								<li><input type="radio" id="item-decoration-4" name="item-decoration" value="1" data-decorationtype="print" data-colorsmin="1" data-colorsmax="1"><label for="item-decoration-4">Screen Print - 1 Color 2 Location</label></li>
+								<li><input type="radio" id="item-decoration-5" name="item-decoration" value="1" data-decorationtype="print" data-colorsmin="2" data-colorsmax="2"><label for="item-decoration-5">Screen Print - 2 Color</label></li>
+								<li><input type="radio" id="item-decoration-6" name="item-decoration" value="1" data-decorationtype="print" data-colorsmin="3" data-colorsmax="3"><label for="item-decoration-6">Screen Print - 3 Color</label></li>
+								<li><input type="radio" id="item-decoration-7" name="item-decoration" value="1" data-decorationtype="custom" data-colorsmin="0" data-colorsmax="0"><label for="item-decoration-7">Custom decoration</label></li>
+							</ul>
+						</fieldset>
+						<fieldset id="step-2-custom-decoration" style="display: none">
+							<h3>Customize Decoration</h3>
+							<p>Please specify your desired imprint location requirements in the comments box below.</p>
+							<textarea id="item-decoration-comments"></textarea> 
+						</fieldset>
+						<fieldset id="step-2-decoration-colors" style="display: none">
+							<h3>Decoration Colors</h3>
+							<p>Please select your decoration color below.</p>
+							<p><a href="#step-2-decoration-color-data" class="modal help-me-choose">Help Me Choose?</a></p>
+							<ul id="item-decoration-palete" class="clearfix">
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena" class="current"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena" class="current"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena" class="current"><span style="background-color: #ff0000"></span>Crvena</li>
+							</ul>
+							<p class="footnote">*Stock decoration colors shown on website are for reference only and may not match actual print color.</p>
+							<p>Or you can chose PMS/Custom Color Matching</p>
+							<ul id="item-decoration-colors" class="clearfix">
+								<li><input type="text" id="item-decoration-color-1" maxlength="7"><label for="item-decoration-color-1">Color 1</label></li>
+								<li><input type="text" id="item-decoration-color-2" maxlength="7"><label for="item-decoration-color-2">Color 2</label></li>
+								<li><input type="text" id="item-decoration-color-3" maxlength="7"><label for="item-decoration-color-3">Color 3</label></li>
+								<li><input type="text" id="item-decoration-color-4" maxlength="7"><label for="item-decoration-color-4">Color 4</label></li>
+							</ul>
+							<aside>
+								<h3>FAQ</h3>
+								<ul>
+									<li><a href="#step-2-faq-pms" class="modal">PMS/Custom Color Matching?</a></li>
+								</ul>
+							</aside>
+						</fieldset>
+						<fieldset id="step-2-stitches-colors" style="display: none">
+							<!--
+							<h3>Stitches Type</h3>
+							<p>Please choose one inprint location from the list or chose custom imprint location brom the bottom of the list.</p>							
+							<ul id="item-stitches-decoration" class="clearfix">
+								<li><input type="radio" id="item-stitches-decoration-1" name="item-stitches-decoration" value="1"><label for="item-stitches-decoration-1">Letters Only</label></li>
+								<li><input type="radio" id="item-stitches-decoration-2" name="item-stitches-decoration" value="1" checked="checked"><label for="item-decoration-2">Letters on background surface</label></li>
+								<li><input type="radio" id="item-stitches-decoration-3" name="item-stitches-decoration" value="1"><label for="item-stitches-decoration-3">Logo letters</label></li>
+							</ul>
+							-->
+							<h3>Stitches Colors</h3>
+							<p>Please choose maximum 6 stitches colors.</p>
+							<ul id="item-stitches-decoration-palete" class="clearfix">
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena" class="current"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena" class="current"><span style="background-color: #ff0000"></span>Crvena</li>
+								<li title="Crvena" class="current"><span style="background-color: #ff0000"></span>Crvena</li>
+							</ul>
+						</fieldset>
+					</section>
+					<footer>
+						<button class="btn-back" data-prev="1"><< Previous Step</button>
+						<button class="btn-continue" data-next="3">Next Step >></button>
+					</footer>
+				</section>
+				
+				<section id="step-3" class="customizer-step">
+					<header>
+						<button class="btn-back" data-prev="2"><< Previous Step</button>
+						<button class="btn-continue" data-next="4">Next Step >></button>
+					</header>
+					<section class="step-content">
+						<fieldset id="step-3-imprint-location">
+							<h3>Imprint Location</h3>
+							<p>Please choose one imprint location from the list or chose custom imprint location from the bottom of the list.</p>
+							<ul id="item-imprint-location" class="clearfix">
+								<li><input type="radio" id="item-imprint-location-1" name="item-imprint-location" value="1" data-decorationlocation="standard"><label for="item-imprint-location-1">Back - Center</label></li>
+								<li><input type="radio" id="item-imprint-location-2" name="item-imprint-location" value="1" data-decorationlocation="standard" checked="checked"><label for="item-imprint-location-2">Front - Center</label></li>
+								<li><input type="radio" id="item-imprint-location-3" name="item-imprint-location" value="1" data-decorationlocation="standard"><label for="item-imprint-location-3">Front - Left Chest</label></li>
+								<li><input type="radio" id="item-imprint-location-4" name="item-imprint-location" value="1" data-decorationlocation="standard"><label for="item-imprint-location-4">Front - Right Chest </label></li>
+								<li><input type="radio" id="item-imprint-location-5" name="item-imprint-location" value="1" data-decorationlocation="standard"><label for="item-imprint-location-5">Sleeve - Left</label></li>
+								<li><input type="radio" id="item-imprint-location-6" name="item-imprint-location" value="1" data-decorationlocation="standard"><label for="item-imprint-location-6">Sleeve - Right</label></li>
+								<li><input type="radio" id="item-imprint-location-7" name="item-imprint-location" value="1" data-decorationlocation="custom"><label for="item-imprint-location-7">Custom imprint location</label></li>
+							</ul>
+						</fieldset>
+						<fieldset id="step-3-imprint-custom-location" style="display: none">
+							<h3>Custom Imprint Location</h3>
+							<p>Please specify your desired imprint location requirements in the comments box below.</p>
+							<textarea id="item-imprint-location-comments"></textarea> 
+						</fieldset>
+						<fieldset id="step-3-imprint-sizes">
+							<h3>Imprint Sizes</h3>
+							<p>Please enter your desired imprint size. Consider that imprint size depends on imprint location.</p>
+							<ul id="item-imprint-sizes" class="clearfix">
+								<li><input type="text" id="item-imprint-width" maxlength="3"><label for="item-imprint-width">Width (Max 123mm)</label></li>
+								<li><input type="text" id="item-imprint-height" maxlength="3"><label for="item-imprint-height">Height (Max 200mm)</label></li>
+							</ul>
+						</fieldset>
+					</section>
+					<footer>
+						<button class="btn-back" data-prev="2"><< Previous Step</button>
+						<button class="btn-continue" data-next="4">Next Step >></button>
+					</footer>
+				</section>
+				
+				<section id="step-4" class="customizer-step">
+					<header>
+						<button class="btn-back" data-prev="3"><< Previous Step</button>
+						<button class="btn-continue" data-next="5">Next Step >></button>
+					</header>
+					<section class="step-content">
+						<fieldset id="step-4-sizes">
+							<h3>Sizes</h3>
+							<p>Please enter your desired size break downs. Please call for sizes not listed.</p>
+							<ul id="item-sizes" class="clearfix">
+								<li><input type="text" id="item-size-xs" maxlength="3"><label for="item-size-xs">(XS) Extra Small</label></li>
+								<li><input type="text" id="item-size-s" maxlength="3"><label for="item-size-s">(S) Small</label></li>
+								<li><input type="text" id="item-size-m" maxlength="3"><label for="item-size-m">(M) Midium</label></li>
+								<li><input type="text" id="item-size-l" maxlength="3"><label for="item-size-l">(L) Large</label></li>
+								<li><input type="text" id="item-size-xl" maxlength="3"><label for="item-size-xl">(XL) Extra Large</label></li>
+								<li><input type="text" id="item-size-xxl" maxlength="3"><label for="item-size-xxl">(XXL) Turbo Large</label></li>
+							</ul>
+							<p>Minimum order is <strong>200</strong> articles.</p>
+						</fieldset>
+					</section>
+					<footer>
+						<button class="btn-back" data-prev="3"><< Previous Step</button>
+						<button class="btn-continue" data-next="5">Next Step >></button>
+					</footer>
+				</section>
+				
+				<section id="step-5" class="customizer-step">
+					<header>
+						<button class="btn-back" data-prev="4"><< Previous Step</button>
+						<button class="btn-continue" data-next="6">Next Step >></button>
+					</header>
+					<section class="step-content">
+						<fieldset id="step-5-artwork">
+							<h3>Logo and Artwork</h3>
+							<p>Would you like to add a logo or graphic image to your imprint? To ensure a quality print, our professional artists will touch-up low-resolution images. Please note that you will receive a virtual proof requiring approval via email within 48 hours after receipt of artwork. Include any special instructions in the comments box below. Production times begin after approval of virtual proof.</p>
+							<ul id="item-artwork-type" class="clearfix">
+								<li><input type="radio" id="item-artwork-type-1" name="item-artwork-type" value="1" checked="checked" data-artworktype="text"><label for="item-artwork-type-1"><strong>No, Text Only (Includes Virtual Proof)</strong></label></li>
+								<li class="item-artwork-type-label">Choose this option if you would only like text for your imprint.</li>
+								<li><input type="radio" id="item-artwork-type-3" name="item-artwork-type" value="1" data-artworktype="file"><label for="item-artwork-type-3"><strong>Yes, I Will Upload Art (Includes Virtual Proof)</strong></label></li>
+								<li class="item-artwork-type-label">Choose this option if you have an image that you would like to upload to your order.</li>
+							</ul>
+						</fieldset>
+						<fieldset id="step-5-artwork-text">
+							<h3>Artwork Text</h3>
+							<p>If you would like to add text use the text box below to add text to your imprint. Try to keep text within the provided text area. A <a href="#">virtual proof</a> will always be sent for your approval before order is printed to ensure accuracy and quality.</p>
+							<textarea id="item-artwork-text"></textarea> 
+						</fieldset>
+						<fieldset id="step-5-artwork-field" style="display: none">
+							<h3>Artwork File</h3>
+							<p>Please choose artwork from your repository. We support jpg, png, eps and cdr formats.</p>
+							<input type="file" id="item-artwork-file" value="Browse"> 
+						</fieldset>
+						<fieldset id="step-5-artwork-comments">
+							<h3>Artwork Comments</h3>
+							<p>Please specify your special Artwork requirements in the comments box below.</p>
+							<textarea id="item-artwork-comments"></textarea>
+							<aside>
+								<h3>FAQ</h3>
+								<ul>
+									<li><a href="#step-5-faq-virtual-proof" class="modal">What is a virtual proof?</a></li>
+									<li><a href="#step-5-faq-artwork-sending" class="modal">How can I send you my artwork?</a></li>
+								</ul>
+							</aside> 
+						</fieldset>
+					</section>
+					<footer>
+						<button class="btn-back" data-prev="4"><< Previous Step</button>
+						<button class="btn-continue" data-next="6">Next Step >></button>
+					</footer>
+				</section>
+				
+				<section id="step-6" class="customizer-step">
+					<header>
+						<button class="btn-back" data-prev="5"><< Previous Step</button>
+						<button class="btn-submit">+ Add to Chart</button>
+					</header>
+					<section class="step-content">
+						<fieldset id="step-5-production">
+							<h3>Standard or Rush Production</h3>
+							<p>Please choose your production and delivery method. Production and estimated delivery times begin after payment/credit, art and virtual proof approval. Estimated delivery may be affected by holidays.</p>
+							<ul id="item-production-type" class="clearfix">
+								<li><input type="radio" id="item-production-type-1" name="item-production-type" value="1" checked="checked"><label for="item-production-type-1"><strong>Standard Production</strong></label></li>
+								<li class="item-production-type-label">Choose standard production if your in hands date is not required or is not needed before the estimated delivery date of <strong>3/13/2012 - 3/15/2012.</strong></li>
+								<li><input type="radio" id="item-production-type-2" name="item-production-type" value="1"><label for="item-production-type-2"><strong>Rush Production</strong></label></li>
+								<li class="item-production-type-label">
+									Choose this option if you need your order before 3/13/2012. A representative will contact you after your order is placed to go over rush pricing and/or expedited shipping options that best suit your needs.
+									<div class="item-production-rush-date">
+										<input type="text" id="production-rush-date" readonly="readonly">
+									</div>
+								</li>
+							</ul>
+						</fieldset>
+						<fieldset id="step-5-production-comments">
+							<h3>Production/Shipping Comments</h3>
+							<textarea id="item-production-comments"></textarea> 
+						</fieldset>
+					</section>
+					<footer>
+						<button class="btn-back" data-prev="5"><< Previous Step</button>
+						<button class="btn-submit">+ Add to Chart</button>
+					</footer>
+				</section>
+				
+				<!-- steps modal data begin -->
+				<section style="display: none">
+					
+					<article class="step-content-modal" id="step-1-color-data">
+						<header><h1>How do I select the color for my item?</h1></header>
+						<p>Click on the radio button next to your desired item color. Item color swatches shown are for reference only and may not exactly match the actual item color.</p>
+						<ul>
+							<li><strong>Stock Colors:</strong> Colors shown here are for reference only. Please refer to the product image(s) or request a sample for a more accurate color representation.</li>
+							<li><strong>Color Assortments:</strong> If you would like a color assortment, please call 01/400 22 33 or Live Chat any time between 09 to 16 hours Monday through Friday to place your order.</li>
+						</ul>
+						<p>Please call 01/4002233 or Live Chat any time between 09  to 16 hours Monday through Friday with us if you require additional assistance in choosing an item color.</p>
+					</article>
+				
+					<article class="step-content-modal" id="step-2-decoration-method-data">
+						<header><h1>Which decoration method should I choose?</h1></header>
+						<p>The options shown reflect standard decoration methods for this product.</p>
+						<ul>
+							<li>There are many different methods available for decorating your garments with your design. Some methods work only on certain garments or different abilities to resolve detail. They all have different price points.</li>
+							<li>Be sure to consult the description of each standard decoration method. They will generally illuminate which decoration method will work best for your needs.</li> 
+							<li>If you are not sure, feel free to contact us for assistance in choosing an decoration method.</li>
+							<li>Other decoration methods may be available at an additional cost; please call 01/4002233</li>
+						</ul>
+						<p>Please choose one decoration method from the list or choose custom decoration method from the bottom of the list.</p>
+					</article>
+					
+					<article class="step-content-modal" id="step-2-decoration-color-data">
+						<header><h1>How do I choose my decoration color?</h1></header>
+						<p>Click on the radio button next to your desired item color. Item color swatches shown are for reference only and may not exactly match the actual item color.</p>
+						<ul>
+							<li><strong>Stock Colors:</strong> Colors shown here are for reference only. Please refer to the product image(s) or request a sample for a more accurate color representation.</li>
+							<li><strong>Color Assortments:</strong> If you would like a color assortment, please call 01/400 22 33 or Live Chat any time between 09 to 16 hours Monday through Friday to place your order.</li>
+						</ul>
+						<p>Please call 01/4002233 or Live Chat any time between 09  to 16 hours Monday through Friday with us if you require additional assistance in choosing an item color.</p>
+					</article>
+					
+					<article class="step-content-modal" id="step-2-faq-pms">
+						<header><h1>Is PMS or custom color-matching available through Klik 4?</h1></header>
+						<p><strong>Absolutely.</strong> Just specify the PMS (Pantone Matching System) number(s) in the PMS/Custom Color Matching box when customizing your item.</p>
+						<ul>
+							<li><strong>Background Colors:</strong> The background color affects the way your imprint color appears; the truest color matches will be obtained when imprinting on a white item.</li>
+							<li><strong>DecorationMethods:</strong> Please be aware that exact PMS matching is not possible with some imprint methods due to the nature of the imprinting process. We can usually offer ?as close as possible? matching in these instances; just let us know what color you have in mind!</li>
+						</ul>
+						<p>If you have concerns regarding the appearance of your specified imprint color on a particular item, please call 01/4002233 or LiveChat between 9 AM and 5 PM ET Monday through Friday to speak with a promotions expert.</p>
+					</article>
+					
+					<article class="step-content-modal" id="step-5-faq-virtual-proof">
+						<header><h1>What is a virtual proof?</h1></header>
+						<p><strong>A virtual proof is a digital representation of your artwork on the product you?ve purchased. Because Klik 4 uses templates provided by the manufacturer, your virtual proof is the closest approximation to how the final product will appear.</strong></p>
+						<p><strong>We will not submit an order to production until you have approved your virtual proof.</strong></p>
+						<ul>
+							<li>Virtual proofs are prepared within one business day after your order is placed.</li>
+							<li>We will email you when your virtual proof is ready. You can then view, approve, or request changes to it.</li>
+							<li>After your virtual proof has been created, we are happy to revise it as needed until you are wholly satisfied.</li>
+							<li>Because of the labor-intensive nature of this process, we require that you submit payment before we can create a virtual proof.</li>
+							<li>Want to see a sample product with your logo on it? Consider ordering a spec sample, also known as a pre-production proof.</li>
+						</ul>
+						<p>If you have any questions about your virtual proof, please call 01/4002233 or LiveChat between 9 AM and 5 PM ET Monday through Friday to speak with a promotions expert.
+					</article>
+					
+					<article class="step-content-modal" id="step-5-faq-artwork-sending">
+						<header><h1>How do I send Klik4 my artwork?</h1></header>
+						<p><strong>After you've choosed &amp;Yes, I will Upload Art&amp; you can upload your artwork to Klik4.</strong></p>
+						<ul>
+							<li><strong>Large Files (over 25 MB):</strong> Please contact us to request our large file upload link.</li>
+							<li><strong>Preferred Formats:</strong> While we accept art in any format, we prefer black-and-white vector/print-ready artwork created in one of the following programs: Adobe Illustrator, Corel Draw, or Macromedia Freehand. Popular vector format file extensions include: .ai, .cdr, and .eps. Please avoid sending Microsoft Office document files such as Word or Excel. If an Office document is sent with images, please send them separately.</li>
+							<li><strong>Vector Art Conversion:</strong> An artist will contact you to resolve any issues that arise in creating print-ready artwork if you send artwork in the following formats: .jpg, .gif, .bmp, .tif, or a Photoshop-generated .eps file. Providing non-vector artwork may delay your order, as an artist will have to retouch or recreate your artwork. Due to the labor involved in converting raster images to vector artwork, your order will be subject to an Art Conversion Fee if we have to convert your artwork to vector format.</li>
+							<li><strong>Troubleshooting:</strong> If you are having trouble uploading your artwork through the Logo and Artwork screen, you can also send your artwork as an email attachment to <a link="mailto:info@greenseeker.hr">info@greenseeker.hr</a>.</li>
+						</ui>
+						<p>If you have any questions about sending Klik4 your artwork, please call us at 01/4002233 between 9 AM and 5 PM ET or use our LiveChat feature to speak with a promotions expert.</p>
+					</article>
+					
+					<article class="step-content-modal" id="product-calculator-setup">
+						<header><h1>What is a setup charge?</h1></header>
+						<p>Setup charges are fees set by our manufacturing partners to cover the cost of setting up the printing equipment required to apply your artwork to the product.
+						<ul>
+							<li>Setup charges vary by product and by imprint method.</li>
+						    <li>Each unique product in your order is subject to a setup charge?meaning that if you are customizing two separate products, you may have to pay a setup charge for each product.</li>
+						    <li>Because we keep your art on file at our production facilities, we can typically waive the setup charge if you reorder the exact same product from us within a year.</li>
+						    <li>If you make changes to your artwork when reordering, be aware that a new setup will have to be configured, which may result in an additional setup charge.</li>
+						    <li>Because setup charges are designated by our manufacturing partners, they are not discounted when using a coupon code at checkout.</li>
+						</ul>
+						<p>If you have any questions, please call 800-554-0127 or LiveChat between 9 AM and 8 PM ET to speak with a promotions expert.</p>
+    				</article>
+					
+					<article class="step-content-modal" id="product-calculator-total">
+						<header><h1>Customization Summary</h1></header>
+						<div class="calc-item-details-content">
+							<table>
+								<thead>
+									<tr>
+										<th>Screen Print - 3 Color</th>
+										<th class="cell-currency">100 Kn</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Blue</td>
+										<td class="cell-currency">30 Kn</td>
+									</tr>
+									<tr>
+										<td>Red</td>
+										<td class="cell-currency">30 Kn</td>
+									</tr>
+									<tr>
+										<td>Green</td>
+										<td class="cell-currency">40 Kn</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td>Ukupno</td>
+										<td class="cell-currency">200 Kn</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</article>
+					
+					<article class="step-content-modal" id="warning-color-print-1-1">
+						<p>Please choose 1 color of your choice!</p>
+					</article>
+					
+					<article class="step-content-modal" id="warning-color-print-2-2">
+						<p>Please choose 2 colors of your choice!</p>
+					</article>
+					
+					<article class="step-content-modal" id="warning-color-print-3-3">
+						<p>Please choose 3 colors of your choice!</p>
+					</article>
+			
+				</section>
+				<!-- steps modal data end -->
+			
+			</section>
+			
+			<aside id="product-calculator">
+				<header>
+					<h2>Naziv artikla</h2>
+					<p class="product-id">ITEM: 2393</p>
+					<p class="product-sku">Sku: 123456789</p>
+				</header>
+				<figure>
+					<img id="product-calculator-image" src="http://www.nekra.net/klik4/media/catalog/product/cache/1/image/425x/9df78eab33525d08d6e5fb8d27136e95/p/1/p1_thumb_152x104.jpg" alt="Ručni sat" title="Ručni sat" />
+				</figure>
+				<section class="product-calculator">
+					<h3>Customization Summary</h3>
+					<ul>
+						<li><span class="calc-item-wrapper"><span class="calc-item-key">Quantity</span> <span class="calc-item-value">123</span></span></li>
+						<li><span class="calc-item-wrapper"><span class="calc-item-key">Item Color</span> <span class="calc-item-value">Black</span></span></li>
+						<li><span class="calc-item-wrapper"><span class="calc-item-key">Decoration</span> <span class="calc-item-value">Screen Print 4 color</span></span></li>
+						<li><span class="calc-item-wrapper item-key-setup"><span class="calc-item-key">Setup</span> <span class="calc-item-value">200Kn</span><a href="#product-calculator-setup" class="calc-item-details modal">?</a></span></li>
+						<li><span class="calc-item-wrapper"><span class="calc-item-key">Decoration color</span> <span class="calc-item-value">Red( Pms 385c)</span></span></li>
+						<li><span class="calc-item-wrapper"><span class="calc-item-key">Imprint location</span> <span class="calc-item-value">Back-Center</span></span></li>
+						<li><span class="calc-item-wrapper"><span class="calc-item-key">Imprint size</span> <span class="calc-item-value">25x25 cm</span></span></li>
+						<li><span class="calc-item-wrapper"><span class="calc-item-key">Sizes</span> <span class="calc-item-value">S123, M123, L123, XXL345</span></span></li>
+						<li><span class="calc-item-wrapper"><span class="calc-item-key">Artwork</span> <span class="calc-item-value">Yes</span></span></li>
+						<li><span class="calc-item-wrapper"><span class="calc-item-key">Production</span> <span class="calc-item-value">Standard 01/01/2012</span></span></li>
+					</ul>
+					<footer id="calculator-total">
+						<span class="calc-total-wrapper"><span class="calc-total-key">Total</span> <span class="calc-total-value">12.234,00 Kn</span><a href="#product-calculator-total" class="calc-item-details modal">?</a></span>
+					</footer>
+				</section>
+				<footer class="product-details">
+					<h3>Opis</h3>
+					<p>Chino twill constructed cap. Made of 100% cotton. It has 6-panels, a pre-curved bill, and matching velcro closure. USA made.</p>
+				</footer>
+			</aside>
+		
+		</section>
+		
+		<section id="recently-products">
+			<header>Recently browsed</header>
+			<ul id="recently-products-list"></ul>
+		</section>
+		<section id="about-and-compare" class="clearfix">
+			<div class="content">
+				<h2 class="clearfix">Zašto Klik 4</h2>
+				<article>
+					<p>Received the bags today. You are amazing. How tasteful I will be heartily endorsing "imagewar" from Inkhead when I have the opportunity. My daughter is a social media specialist so I'll get help from her on how to "broadcast" my appreciation.</p> 
+					<p>Jeanne Hitchcock Surgical Society Staff 2010 Surgery Faculty Administrator At Hennepin County Medical Center Minneapolis, MN</p>
+				</article>
+				<ul class="clearfix">
+					<li><a href="#" title="">Apparel</a></li>
+					<li><a href="#" title="">T-shirts</a></li>
+					<li><a href="#" title="">Hats &amp; visors</a></li>
+					<li><a href="#" title="">Golf Shirts</a></li>
+					<li><a href="#" title="">Dress Shirts</a></li>
+					<li><a href="#" title="">Jackets</a></li>
+					<li><a href="#" title="">Bottle Openers</a></li>
+				</ul>
+			</div>
+			<div class="side-bar">
+				<h2>Usporedi proizvode (4)</h2>
+				<div class="products-compare-list">
+					<ul>
+						<li>
+							<a class="remove-product" title="Remove This Item" href="#">Remove This Item</a>
+							<a class="compare-product" href="#" title="partner 1"><img src="content/images/partner_link_1.png" alt="partner 1"> Product 1</a>
+						</li>
+						<li>
+							<a class="remove-product" title="Remove This Item" href="#">Remove This Item</a>
+							<a class="compare-product" href="#" title="partner 1"><img src="content/images/partner_link_1.png" alt="partner 1"> Product 1</a>
+						</li>
+						<li>
+							<a class="remove-product" title="Remove This Item" href="#">Remove This Item</a>
+							<a class="compare-product" href="#" title="partner 1"><img src="content/images/partner_link_1.png" alt="partner 1"> Product 1</a>
+						</li>
+						<li>
+							<a class="remove-product" title="Remove This Item" href="#">Remove This Item</a>
+							<a class="compare-product" href="#" title="partner 1"><img src="content/images/partner_link_1.png" alt="partner 1"> Product 1</a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="products-clear-all">Clear all</a>
+				<a href="#" class="products-compare-all">See all &gt;&gt;</a>
+			</div>
+		</section>
+	</section>
+</div>
+<footer id="page-footer">
+	<nav id="page-footer-nav" class="clearfix">
+		<ul>
+			<li>E-mail Exclusives
+				<ul class="newsletter-signup">
+					<li>Pretplati se i primaj specijalne ponude putem e-maila.</li>
+					<li><a href="#" title="">Sign up &gt;</a></li>
+				</ul>
+			</li>
+			<li>Shop
+				<ul>
+					<li><a href="#" title="">by Category</a></li>
+					<li><a href="#" title="">by Brand</a></li>
+					<li><a href="#" title="">by Manufacturer</a></li>
+					<li><a href="#" title="">by Industry or Organization</a></li>
+					<li><a href="#" title="">by Theme or Event</a></li>
+					<li><a href="#" title="">Buying Guides</a></li>
+					<li><a href="#" title="">Importing Large Quantitites</a></li>
+					<li><a href="#" title="">Whole sale promo products</a></li>
+				</ul>
+			</li>
+			<li>Subscribe
+				<ul>
+					<li><a href="#" title="">Site Feed</a></li>
+					<li><a href="#" title="">Catalog Request</a></li>
+					<li><a href="#" title="">E-mail Newsletter</a></li>
+					<li><a href="#" title="">Blog</a></li>
+				</ul>
+			</li>
+			<li>Support
+				<ul>
+					<li><a href="#" title="">Contact us</a></li>
+					<li><a href="#" title="">Knowledge base</a></li>
+					<li><a href="#" title="">Reseller Application</a></li>
+					<li><a href="#" title="">Affiliate Application</a></li>
+					<li><a href="#" title="">Privacy and security</a></li>
+					<li><a href="#" title="">Terms of use</a></li>
+					<li><a href="#" title="">International orders</a></li>
+				</ul>
+			</li>
+			<li>Company
+				<ul>
+					<li><a href="#" title="">About us</a></li>
+					<li><a href="#" title="">Donation</a></li>
+					<li><a href="#" title="">Testimonials</a></li>
+					<li><a href="#" title="">Clients</a></li>
+					<li><a href="#" title="">press Releases</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<ul id="sponsors">
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+		<li><a href="#" title="BBB"><img src="content/images/sponsor_link.jpg" alt="Sponsor link"></a></li>
+	</ul>
+	<section id="basic-informations">
+		<p>&copy;2011 KLIK 4, Inc. All Rights Reserved</p>
+		<p><a href="http://www.klik4.com" title=""><img src="images/klik4_logo_midium.png" alt="Klik4 logo midium"></a></p>
+		<p>KLIK 4 Promotional Products</p>
+		<p>XXXXXXXXXXXXXX</p>
+		<p>XXXXXXXXXXXXXX</p>
+		<p>Croatia</p>
+		<p>Phone: 800-554-0127</p>
+		<p>Email: <a href="mailto:sales@klik4.com">sales@klik4.com</a></p>
+	</section>
+</footer>
+<script src="js/jquery-1.7.1.min.js?v=1"></script>
+<script src="js/jquery.tmpl.min.js?v=1"></script>
+<script src="js/jquery.jcarousel.min.js?v=1"></script>
+<script src="js/jquery.fancybox-1.3.4.min.js?v=1"></script>
+<script src="js/jquery.mousewheel-3.0.4.min.js?v=1"></script>
+<script src="js/jquery.jscrollpane.min.js?v=1"></script>
+<script src="js/enzyme.jquery.slider-0.2.min.js?v=1"></script>
+<script src="js/enzyme-0.1.min.js?v=1"></script>
+<script src="js/perpetuum.jquery.ticker-2.0.js?v=1"></script>
+<script src="js/klik4.js?v=1"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	enzyme.page.init(klik4.product.customizationInit);
+});
+</script>
+
+</body>
+</html>
